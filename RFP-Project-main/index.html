@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--we have added this view port tag and set initial scale to 1 so that our side shoudl be adjustable according to different devices especially for mobile devices-->
+    <title>Samrt Fashion Footwear Finder</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!--poppins font from google fonts website then select popping select some types and then embed-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--link to connect to font awesome 4 to use different icons, just type font awesome 4 cdn and click on first link and copy the url and past it here with rel="stylesheet"-->
+</head>
+
+<body>
+    <!--making header-->
+    <div class="header">
+
+        <div class="container">
+            <div class="header">
+                <div class="container">
+                    <div class="navbar">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo.webp" alt="SFFF Logo" width="125px"></a>
+                        </div>
+        
+                        <div class="search-bar-container">
+                            <div class="search-bar">
+                                <input type="text" placeholder="Search for shoes">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+        
+                        <nav>
+                            <ul id="MenuItems">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="Products.html">Products</a></li>
+                                <li><a href="">About</a></li>
+                                <li><a href="">Contact</a></li>
+                                <li><a href="account.html">Account</a></li>
+                            </ul>
+                        </nav>
+        
+                        <a href="cart.html"><img src="images/cart.png" alt="cart" width="30px" height="30px"></a>
+                        <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+                    </div>
+                </div>
+            </div>
+
+
+        <!--making another section in header class container-->
+        <div class="row">
+
+            <!--dividing this section into 2 columns-->
+            <!--1st column for heading button and text-->
+            <div class="col-2">
+                <h1>Give Your Workout<br>A New Style!</h1>
+                <p>Success isn't always about greatness. It's about consistency.
+                    Consistent <br>hard work gains success. Greatness will come.
+                </p>
+                <a href="" class="btn">Explore Now
+                    &#8594;</a><!--where &#8594 is the code of arrow icon in explore now button-->
+            </div>
+
+            <!--2nd for image-->
+            <div class="col-2">
+                <img src="images/image1.png" alt="header image">
+            </div>
+
+        </div>
+    </div>
+
+    <!--Featured categories-->
+    <!--categores class to edit whole section, then small container class to edit whole row, then row class to edit area surrounding images, then col-3 class to edit col of each image then col-3 img used in css to edit image -->
+    <div class="categories">
+
+        <!--we will create 3 column for 3 images at a time in single row like we did above by making 2 columns-->
+
+        <!--small container class contains row which consist of whole columns sections then col-3 which consist of col of images-->
+        <div class="small container">,<!--container class to edit images section-->
+            <div class="row">
+
+                <!--3 columns for 3 images-->
+                <div class="col-3">
+                    <img src="images/category-1.jpg" alt="">
+                </div>
+                <div class="col-3">
+                    <img src="images/category-2.jpg" alt="">
+                </div>
+                <div class="col-3">
+                    <img src="images\category-3.webp" alt="">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--Featured Products-->
+    <!--using same class small container to maintain same styling-->
+
+    <div class="small container">
+        <!--using again same row class to maintain same styling -->
+        <h2 class="title">Featured Products</h2>
+        <div class="row">
+            <!--this time we will make 4 columns-->
+            <!-- Featured Products -->
+            <div class="col-4">
+                <a href="product-detail.html"><img src="images/product-1.jpg"></a>
+                <a href="product-detail.html">
+                    <h4>Shoe Cat 1</h4>
+                </a>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>₹3,499.00</p>
+            </div>
+
+            <div class="col-4">
+                <img src="images/product-2.jpg">
+                <h4>Shoe cat 2</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>₹4,299.00</p>
+            </div>
+
+            <div class="col-4">
+                <img src="images/product-3.jpg">
+                <h4>Shoe cat 3</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>₹3,799.00</p>
+            </div>
+
+            <div class="col-4">
+                <img src="images/product-4.jpg">
+                <h4>Shoe cat 4</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                <p>₹4,599.00</p>
+            </div>
+
+            <div class="col-4">
+                <img src="images/product-5.jpg">
+                <h4>Shoe cat 5</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>₹3,999.00</p>
+            </div>
+
+            <div class="col-4">
+                <img src="images/product-6.jpg">
+                <h4>Shoe cat 6</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>₹4,199.00</p>
+            </div>
+
+            <div class="col-4">
+                <img src="images/product-7.jpg">
+                <h4>Shoe cat 7</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>₹3,650.00</p>
+            </div>
+        </div>
+    </div>
+<!-- Continue for the rest of the products... -->
+
+    </div>
+
+    <!--offer-->
+    <div class="offer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-2">
+                    <img src="images\exclusive-shoe.png" class="offer-img">
+                </div>
+
+                <div class="col-2">
+                    <p>Exclusively available on SFFF</p>
+                    <h1>Nike Air Jordan</h1>
+                    <small>You've got the hops and the speed—lace up in shoes that enhance what you bring to the court. 
+                        The latest AJ is all about take-offs and landings, with multiple Air units to get you off the ground.
+                    </small>
+                    <a href="" class="btn">Buy Now
+                        &#8594;</a><!--where &#8594 is the code of arrow icon in explore now button-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------testimonials-------------->
+
+    <div class="testimonial">
+        <div class="small container"><!--section-->
+            <div class="row"><!--row-->
+
+                <!--3 comments-->
+                <div class="col-3"><!--3 columns-->
+
+                    <!--add " or left quote before comment-->
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the prinitng and typesetting industry. Lorem Ipsum has been
+                        the industry;s standard dummy text ever
+                    </p>
+                    <div class="rating"><!--add stars for rating of product from font awesome 4-->
+                        <i class="fa fa-star"
+                            aria-hidden="true"></i><!--add 4 black start and one transparent star to show 4 out of 5 rating-->
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    </div>
+                    <img src="images/user-1.png"><!--image of person-->
+                    <h3>Akshay</h3><!--name of person-->
+
+                </div>
+
+                <div class="col-3"><!--3 columns-->
+
+                    <!--add " or left quote before comment-->
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the prinitng and typesetting industry. Lorem Ipsum has been
+                        the industry;s standard dummy text ever
+                    </p>
+                    <div class="rating"><!--add stars for rating of product from font awesome 4-->
+                        <i class="fa fa-star"
+                            aria-hidden="true"></i><!--add 4 black start and one transparent star to show 4 out of 5 rating-->
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    </div>
+                    <img src="images/user-2.png"><!--image of person-->
+                    <h3>Balaaje</h3><!--name of person-->
+
+                </div>
+
+                <div class="col-3"><!--3 columns-->
+
+                    <!--add " or left quote before comment-->
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the prinitng and typesetting industry. Lorem Ipsum has been
+                        the industry;s standard dummy text ever
+                    </p>
+                    <div class="rating"><!--add stars for rating of product from font awesome 4-->
+                        <i class="fa fa-star"
+                            aria-hidden="true"></i><!--add 4 black start and one transparent star to show 4 out of 5 rating-->
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    </div>
+                    <img src="images/user-3.png"><!--image of person-->
+                    <h3>Rishith</h3><!--name of person-->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-------footer------->
+    <div class="footer">
+        <div class="container"><!-- it will follow same styling as of header-->
+            <div class="row">
+
+                <div class="footer-col-2">
+                    <img src="images\logo.webp">
+                    <p>Our purpose is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.
+                    </p>
+                </div>
+
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+
+                </div>
+
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+
+                </div>
+            </div>
+            <!--add horizontal line and copyright text along with clickable link-->
+            <hr>
+            <a href="" class="copyright">Copyright 2025 - Made with ❤️ by Akshay Balaaje Rishith</a>
+        </div>
+    </div>
+
+    <!-----------------JS----------------------->
+    <script>
+        //declare variable MenuItems which take ul having id "MenuItems"
+
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";//by default, we have set menu or dropdown menu height to 0px, means it is close by default
+
+        function menutoggle()//this is the function which we have called above in nav which works on small devices and users click on it
+        {
+            if (MenuItems.style.maxHeight == "0px")//when user click on it and if it is closed or its height is 0px, then it will open or it should have heigt of 200px upon clicking
+            {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else//if user not clicked or it has already opened, then it will upon clicking again closed
+            {
+                MenuItems.style.maxHeight = "0px"
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Fashion Footwear Finder</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.webp" alt="SFFF Logo" width="125px"></a>
+                </div>
+        
+                <div class="search-bar-container">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search for shoes">
+                        <button type="submit" id="searchButton"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+        
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="cart.html">Products</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </nav>
+        
+                <a href="cart.html"><img src="images/cart.png" alt="cart" width="30px" height="30px"></a>
+                <img src="images/menu.png" class="menu-icon" onclick="menuToggle()">
+            </div>
+        </div>
+
+         Rest of the previous index.html content remains the same -->
+        <!-- Added product cards with onclick for adding to cart
+        <div class="small container">
+            <h2 class="title">Featured Products</h2>
+            <div class="row">
+                <div class="col-4">
+                    <img src="images/product-1.jpg">
+                    <h4>Shoe Cat 1</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>₹3,499.00</p>
+                    <button onclick="addToCart('Shoe Cat 1', 3499)">Add to Cart</button>
+                </div>
+              Repeat similar structure for other product cards 
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>-->
