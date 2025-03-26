@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Smart Fashion Footwear Finder</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="JS/product-script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.webp" alt="SFFF Logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </nav>
+            <div class="cart-container">
+                <a href="cart.html">
+                    <img src="images/cart.png" alt="cart" width="30px" height="30px">
+                    <span id="cart-count" class="cart-count">0</span>
+                </a>
+            </div>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <div class="small-container single-product">
+        <div class="row">
+            <div class="col-2">
+                <img src="images/product-1.jpg" width="100%" id="product-img">
+                <div class="small-img-row" id="small-img-row">
+                    <!-- Small images will be populated dynamically -->
+                </div>
+            </div>
+
+            <div class="col-2">
+                <p>Home / Footwear</p>
+                <h1 id="product-name">Product Name</h1>
+                <h4 id="product-price">₹0.00</h4>
+                <select id="size-select">
+                    <option>Select Size</option>
+                    <!-- Sizes will be populated dynamically -->
+                </select>
+                <input type="number" value="1" min="1" id="quantity-input">
+                <a href="#" class="btn" id="add-to-cart-btn">Add to Cart</a>
+                <h3>Product Details <i class="fa fa-indent" aria-hidden="true"></i></h3>
+                <br>
+                <p id="product-description">Product description goes here...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="small container">
+        <div class="row row-2">
+            <h2>Related Products</h2>
+            <p><a href="Products.html">View More</a></p>
+        </div>
+    </div>
+
+    <div class="small container">
+        <div class="row" id="related-products">
+            <!-- Related products will be populated dynamically -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-2">
+                    <img src="images/logo.webp">
+                    <p>Our purpose is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="#">Coupons</a></li>
+                        <li><a href="#">Blog Post</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Join Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <a href="" class="copyright">Copyright 2025 - Made with ❤️ by Akshay Balaaje Rishith</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menu toggle functionality
+            const MenuItems = document.getElementById("MenuItems");
+            MenuItems.style.maxHeight = "0px";
+
+            function menutoggle() {
+                MenuItems.style.maxHeight = MenuItems.style.maxHeight === "0px" ? "200px" : "0px";
+            }
+            window.menutoggle = menutoggle; // Make function globally accessible
+
+            // Render product details (already in product-script.js)
+            renderProductDetails();
+
+            // Render related products
+            const relatedProductsContainer = document.getElementById('related-products');
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentProductId = parseInt(urlParams.get('id'));
+            
+            // Show 4 random related products excluding current product
+            const relatedProducts = products
+                .filter(p => p.id !== currentProductId)
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 4);
+
+            relatedProducts.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'col-4';
+                productDiv.setAttribute('data-id', product.id);
+                productDiv.innerHTML = `
+                    <a href="product-detail.html?id=${product.id}">
+                        <img src="images/product-${product.id}.jpg">
+                        <h4>${product.name}</h4>
+                    </a>
+                    <div class="rating">
+                        ${generateRatingStars(product.rating || 4)}
+                    </div>
+                    <p>₹${product.price.toFixed(2)}</p>
+                    <button class="add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
+                `;
+                relatedProductsContainer.appendChild(productDiv);
+            });
+
+            // Add to cart functionality for related products
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const productId = parseInt(button.getAttribute('data-id'));
+                    const product = products.find(p => p.id === productId);
+                    if (product) {
+                        addToCart(product, product.sizes[0], 1);
+                        alert(`${product.name} added to cart!`);
+                    }
+                });
+            });
+
+            // Function to generate rating stars
+            function generateRatingStars(rating) {
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= rating) {
+                        stars += '<i class="fa fa-star" aria-hidden="true"></i>';
+                    } else if (i - 0.5 <= rating) {
+                        stars += '<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+                    } else {
+                        stars += '<i class="fa fa-star-o" aria-hidden="true"></i>';
+                    }
+                }
+                return stars;
+            }
+        });
+    </script>
+</body>
+</html>
