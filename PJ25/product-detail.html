@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Smart Fashion Footwear Finder</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!--JS Files-->
+
+    <script src="JS/products.js"></script>
+<script src="JS/product.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.webp" alt="SFFF Logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Products.html">Products</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html"><img src="images/cart.png" alt="cart" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <div class="small-container single-product">
+        <div class="row">
+            <div class="col-2">
+                <img src="" width="100%" id="product-img">
+
+                <div class="small-img-row">
+                    <!-- Small images will be dynamically loaded -->
+                </div>
+            </div>
+
+            <div class="col-2">
+                <p>Home / Product</p>
+                <h1>Product Name</h1>
+                <div class="rating">
+                    <!-- Rating stars will be dynamically loaded -->
+                </div>
+                <h4>₹0.00</h4>
+
+                <select>
+                    <option>Select Size</option>
+                </select>
+
+                <input type="number" value="1" min="1">
+                <a href="" class="btn">Add To Cart</a>
+                
+                <h3>Product Details <i class="fa fa-indent" aria-hidden="true"></i></h3>
+                <p>Product description will be dynamically loaded here.</p>
+                
+                <h3>Key Features</h3>
+                <ul id="product-features">
+                    <!-- Features will be dynamically loaded -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="small container">
+        <div class="row row-2">
+            <h2>Related Products</h2>
+            <p>View More</p>
+        </div>
+    </div>
+
+    <div class="small container">
+        <div class="row">
+            <div class="col-4">
+                <img src="Images/product-9.jpg">
+                <h4>Athletic Performance Tee</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>₹1,099.00</p>
+            </div>
+
+            <div class="col-4">
+                <img src="Images/product-10.jpg">
+                <h4>Fitness Training Jersey</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>₹1,249.00</p>
+            </div>
+
+            <div class="col-4">
+                <img src="Images/product-11.jpg">
+                <h4>Sports Compression Top</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>₹1,179.00</p>
+            </div>
+
+            <div class="col-4">
+                <img src="Images/product-12.jpg">
+                <h4>Lightweight Running Top</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                <p>₹1,299.00</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container"><!-- it will follow same styling as of header-->
+            <div class="row">
+
+                <div class="footer-col-2">
+                    <img src="images\logo.webp">
+                    <p>Our purpose is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.
+                    </p>
+                </div>
+
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+
+                </div>
+
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+
+                </div>
+            </div>
+            <!--add horizontal line and copyright text along with clickable link-->
+            <hr>
+            <a href="" class="copyright">Copyright 2025 - Made with ❤️ by Akshay Balaaje Rishith</a>
+        </div>
+    </div>
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            } else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+
+    <script src="JS/products.js"></script>
+    <script src="JS/product.js"></script>
+</body>
+</html>

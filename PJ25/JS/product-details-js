@@ -1,0 +1,65 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Get product ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    if (productId) {
+        const product = getProductById(parseInt(productId));
+        
+        if (product) {
+            // Update product images
+            const mainProductImage = document.getElementById('product-img');
+            const smallImgRow = document.querySelector('.small-img-row');
+            
+            mainProductImage.src = product.images[0];
+            mainProductImage.alt = product.name;
+            
+            // Populate small images
+            smallImgRow.innerHTML = product.images.map((img, index) => `
+                <div class="small-img-col">
+                    <img src="${img}" width="100%" class="small-img" onclick="changeMainImage(this)">
+                </div>
+            `).join('');
+            
+            // Update product details
+            document.querySelector('.col-2 h1').textContent = product.name;
+            document.querySelector('.col-2 h4').textContent = `₹${product.price.toFixed(2)}`;
+            document.querySelector('.col-2 p').textContent = product.description;
+            
+            // Populate features
+            const featuresList = document.getElementById('product-features');
+            featuresList.innerHTML = product.features.map(feature => 
+                `<li>${feature}</li>`
+            ).join('');
+            
+            // Populate sizes
+            const sizeSelect = document.querySelector('select');
+            sizeSelect.innerHTML = ['<option>Select Size</option>', ...product.sizes.map(size => 
+                `<option value="${size}">${size}</option>`
+            )].join('');
+            
+            // Update rating stars
+            updateRatingStars(product.rating);
+        }
+    }
+});
+
+// Function to change main product image
+function changeMainImage(smallImg) {
+    const productImg = document.getElementById('product-img');
+    productImg.src = smallImg.src;
+}
+
+// Function to update rating stars
+function updateRatingStars(rating) {
+    const ratingContainer = document.querySelector('.rating');
+    ratingContainer.innerHTML = Array.from({length: 5}, (_, i) => {
+        if (i < Math.floor(rating)) {
+            return '<i class="fa fa-star" aria-hidden="true"></i>';
+        } else if (i < rating) {
+            return '<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+        } else {
+            return '<i class="fa fa-star-o" aria-hidden="true"></i>';
+        }
+    }).join('');
+}
