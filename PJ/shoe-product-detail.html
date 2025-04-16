@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Smart Shoe Store</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="JS/shoe-script.js" defer></script>
+    <script src="JS/user-management.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.webp" alt="SSS Logo" width="125px"></a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search shoes..." id="search-input" autocomplete="off">
+                <div id="search-suggestions" class="search-suggestions"></div>
+                <button type="submit" id="search-btn"><img src="images/search-icon.png" alt="Search" width="20px"></button>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shoe-products.html">Shoes</a></li>
+                    <li><a href="new-arrivals.html">New Arrivals</a></li>
+                    <li><a href="best-sellers.html">Best Sellers</a></li>
+                    <li><a href="sale-shoes.html">Sale</a></li>
+                    <li><a href="account.html">Account</a></li>
+                    <li id="logout-link" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </nav>
+            <div class="cart-container">
+                <a href="cart.html">
+                    <img src="images/cart.png" alt="cart" width="30px" height="30px">
+                    <span id="cart-count" class="cart-count">0</span>
+                </a>
+            </div>
+            <img src="images/menu.png" class="menu-icon" onclick="shoeMenuToggle()">
+        </div>
+    </div>
+
+    <div class="small container single-product">
+        <!-- Product details will be dynamically inserted here -->
+    </div>
+
+    <div class="small container">
+        <h2 class="title">Related Products</h2>
+        <div class="row" id="related-shoes">
+            <!-- Related shoes will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-2">
+                    <img src="images/logo.webp">
+                    <p>Discover the perfect shoes for every step you take.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="#">Coupons</a></li>
+                        <li><a href="#">Blog Post</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Join Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <a href="#" class="copyright">Copyright 2025 - Smart Shoe Store</a>
+        </div>
+    </div>
+</body>
+</html>
