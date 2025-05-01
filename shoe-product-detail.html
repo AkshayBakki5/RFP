@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Smart Shoe Store</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="JS/shoe-script.js" defer></script>
+    <script src="JS/user-management.js" defer></script>
+    <script src="JS/cart.js" defer></script>
+</head>
+<body data-product-id="1">
+    <!-- Navbar -->
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html" aria-label="Smart Shoe Store Home">
+                    <img src="images/logo.png" alt="Smart Shoe Store Logo" width="125px">
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search shoes..." id="search-input" autocomplete="off" aria-label="Search for shoes">
+                <div id="search-suggestions" class="search-suggestions" role="listbox"></div>
+                <button type="submit" id="search-btn" aria-label="Search">
+                    <img src="images/search-icon.png" alt="Search Icon" width="20px">
+                </button>
+            </div>
+            <nav>
+                <ul id="MenuItems" role="navigation">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shoe-products.html">Shoes</a></li>
+                    <li><a href="new-arrivals.html">New Arrivals</a></li>
+                    <li><a href="best-sellers.html">Best Sellers</a></li>
+                    <li><a href="sale-shoes.html">Sale</a></li>
+                    <li id="profile-link"><a href="login.html">Login</a></li>
+                    <li id="logout-link" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </nav>
+            <div class="cart-container">
+                <a href="cart.html" aria-label="View shopping cart">
+                    <img src="images/cart.png" alt="Shopping Cart" width="30px" height="30px">
+                    <span id="cart-count" class="cart-count" aria-live="polite">0</span>
+                </a>
+            </div>
+            <img src="images/menu.png" class="menu-icon" onclick="shoeMenuToggle()" alt="Menu Toggle" aria-label="Toggle navigation menu">
+        </div>
+    </div>
+
+    <!-- Product Details (Dynamically Populated) -->
+    <div class="small container single-product" aria-live="polite">
+        <!-- Product details will be dynamically inserted here by renderShoeDetails -->
+    </div>
+
+    <!-- Related Products -->
+    <div class="small container">
+        <h2 class="title">Related Products</h2>
+        <div class="row" id="related-shoes" aria-live="polite">
+            <!-- Related shoes will be dynamically inserted here by renderShoeDetails -->
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonial">
+        <div class="small container">
+            <div class="row">
+                <div class="col-3">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <p>Great quality shoes and fast delivery!</p>
+                    <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    </div>
+                    <img src="images/user-1.png" alt="User Akshay">
+                    <h3>Akshay</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <p>Comfortable and stylish footwear!</p>
+                    <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    </div>
+                    <img src="images/user-2.png" alt="User Balaaje">
+                    <h3>Balaaje</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    <p>Perfect fit and great service!</p>
+                    <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    </div>
+                    <img src="images/user-3.png" alt="User Rishith">
+                    <h3>Rishith</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Reviews -->
+    <section class="product-reviews" style="margin-top: 40px;">
+        <h2>Customer Reviews</h2>
+        <div id="review-controls" style="margin: 20px 0;">
+            <label for="sort-reviews">Sort by:</label>
+            <select id="sort-reviews" aria-label="Sort reviews">
+                <option value="newest">Newest</option>
+                <option value="highest">Highest Rating</option>
+                <option value="lowest">Lowest Rating</option>
+            </select>
+        </div>
+        <div id="review-list" aria-live="polite">
+            <div class="loader" style="display: none;">Loading reviews...</div>
+            <!-- Reviews will be dynamically inserted here -->
+        </div>
+        <form id="review-form" style="margin-top: 20px;" aria-label="Submit a review">
+            <input type="text" id="review-name" placeholder="Your name" required aria-required="true">
+            <br><br>
+            <select id="review-rating" required aria-required="true" aria-label="Select rating">
+                <option value="">Rating</option>
+                <option value="1">1 ★</option>
+                <option value="2">2 ★★</option>
+                <option value="3">3 ★★★</option>
+                <option value="4">4 ★★★★</option>
+                <option value="5">5 ★★★★★</option>
+            </select>
+            <br><br>
+            <textarea id="review-comment" placeholder="Write your review..." required aria-required="true" aria-label="Review comment"></textarea>
+            <br><br>
+            <button type="submit">Submit Review</button>
+        </form>
+    </section>
+
+    <!-- FAQs -->
+    <section class="product-faq" style="margin-top: 40px;">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">What is the return policy?</button>
+            <div class="faq-answer" style="display:none;">You can return shoes within 30 days in original condition.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">Are these shoes true to size?</button>
+            <div class="faq-answer" style="display:none;">Yes, we recommend ordering your normal size.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">How do I clean these shoes?</button>
+            <div class="faq-answer" style="display:none;">Use a damp cloth or shoe cleaner for best results. Avoid machine washing.</div>
+        </div>
+    </section>
+
+    <!-- Size Guide Modal Trigger Button -->
+    <button id="size-guide-btn" style="margin-top: 15px;">View Size Guide</button>
+
+    <!-- Size Guide Modal -->
+    <div id="size-guide-modal" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%); background:#fff; padding:20px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.2); z-index:1000;">
+        <h2>Size Guide</h2>
+        <table border="1" cellpadding="10" style="width:100%; text-align:center;">
+            <thead>
+                <tr>
+                    <th>US</th>
+                    <th>UK</th>
+                    <th>EU</th>
+                    <th>CM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6</td>
+                    <td>5.5</td>
+                    <td>39</td>
+                    <td>24.5</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>6.5</td>
+                    <td>40</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>7.5</td>
+                    <td>41</td>
+                    <td>26</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>8.5</td>
+                    <td>42</td>
+                    <td>27</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>9.5</td>
+                    <td>43</td>
+                    <td>28</td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="document.getElementById('size-guide-modal').style.display='none'" style="margin-top: 15px;" aria-label="Close size guide">Close</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-2">
+                    <img src="images/logo.png" alt="Smart Shoe Store Footer Logo">
+                    <p>Discover the perfect shoes for every step you take.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="#">Coupons</a></li>
+                        <li><a href="#">Blog Post</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Join Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <a href="#" class="copyright">Copyright 2025 - Smart Shoe Store</a>
+        </div>
+    </div>
+
+    <script>
+        // FAQ Toggle
+        document.addEventListener("DOMContentLoaded", function () {
+            const questions = document.querySelectorAll(".faq-question");
+            questions.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const answer = btn.nextElementSibling;
+                    const isExpanded = btn.getAttribute("aria-expanded") === "true";
+                    btn.setAttribute("aria-expanded", !isExpanded);
+                    answer.style.display = isExpanded ? "none" : "block";
+                });
+            });
+
+            // Size Guide Modal
+            const sizeBtn = document.getElementById("size-guide-btn");
+            const modal = document.getElementById("size-guide-modal");
+            sizeBtn.addEventListener("click", function () {
+                modal.style.display = "block";
+            });
+
+            // Review Form Submission
+            const reviewForm = document.getElementById("review-form");
+            const reviewList = document.getElementById("review-list");
+            const sortReviews = document.getElementById("sort-reviews");
+
+            // Show loading state for reviews
+            reviewList.querySelector(".loader").style.display = "block";
+
+            // Load reviews from localStorage
+            let reviews = JSON.parse(localStorage.getItem(`reviews_${new URLSearchParams(window.location.search).get('id')}`)) || [
+                { name: "Anonymous", rating: 5, comment: "Great quality shoes!", date: "2025-04-20" },
+                { name: "Anonymous", rating: 3, comment: "Average fit, but okay for the price.", date: "2025-04-15" },
+                { name: "Anonymous", rating: 1, comment: "Poor build quality.", date: "2025-04-10" }
+            ];
+
+            function displayReviews(reviewsToShow) {
+                reviewList.querySelector(".loader").style.display = "none";
+                reviewList.innerHTML = "";
+                reviewsToShow.forEach(review => {
+                    const reviewDiv = document.createElement("div");
+                    reviewDiv.className = "review";
+                    reviewDiv.dataset.rating = review.rating;
+                    reviewDiv.dataset.date = review.date;
+                    reviewDiv.innerHTML = `
+                        <p>${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)} ${review.comment}</p>
+                        <small>By ${review.name} on ${review.date}</small>
+                    `;
+                    reviewList.appendChild(reviewDiv);
+                });
+            }
+
+            // Initial display of reviews
+            displayReviews(reviews);
+
+            // Handle review form submission
+            reviewForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (!checkLoginStatus()) {
+                    alert("Please log in to submit a review.");
+                    window.location.href = "login.html";
+                    return;
+                }
+                const name = document.getElementById("review-name").value;
+                const rating = parseInt(document.getElementById("review-rating").value);
+                const comment = document.getElementById("review-comment").value;
+                const date = new Date().toISOString().split("T")[0];
+
+                reviews.push({ name, rating, comment, date });
+                localStorage.setItem(`reviews_${new URLSearchParams(window.location.search).get('id')}`, JSON.stringify(reviews));
+                displayReviews(reviews);
+                reviewForm.reset();
+                sortReviews.dispatchEvent(new Event("change")); // Trigger sorting
+            });
+
+            // Handle review sorting
+            sortReviews.addEventListener("change", () => {
+                const sortBy = sortReviews.value;
+                let sortedReviews = [...reviews];
+                if (sortBy === "newest") {
+                    sortedReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+                } else if (sortBy === "highest") {
+                    sortedReviews.sort((a, b) => b.rating - a.rating);
+                } else if (sortBy === "lowest") {
+                    sortedReviews.sort((a, b) => a.rating - b.rating);
+                }
+                displayReviews(sortedReviews);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9352c104bdfec027',t:'MTc0NTQ2Nzg1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
